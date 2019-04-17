@@ -1,45 +1,35 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ChessBoardTraveling 
-{
-	static void GetPositions(String position)
-	{
+public class ChessBoardTraveling {
+
+	static void GetPositions(String position) {
 		ArrayList<Integer> coordinates = new ArrayList<Integer>();
 		int destinationX, destinationY;
 		
-		for (int i = 0; i < position.length(); i++)
-		{
-			if (Character.isDigit(position.charAt(i)))
-			{
+		for (int i = 0; i < position.length(); i++) {
+			if (Character.isDigit(position.charAt(i))) {
 				coordinates.add((int)(position).charAt(i));
 			}		
 		}
-		
 		destinationX = coordinates.get(2) - coordinates.get(0);
 		destinationY = coordinates.get(3) - coordinates.get(1);
 		
-		ChessBoardPaths(destinationX, destinationY);
-		
+		ChessBoardPaths(destinationX, destinationY);	
 	}
 	
-	static void ChessBoardPaths(int destX, int destY) 
-	{
+	static void ChessBoardPaths(int destX, int destY) {
 		int[][] allPaths = new int[8][8];
 		
-		for (int i = 0; i < 8; i++) 
-		{
-			for (int j = 0; j < 8; j++) 
-			{
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
 				if((i == 0) || (j == 0)) 
 					allPaths[i][j] = 1;
-				else
-				{
+				else {
 					allPaths[i][j] = allPaths[i - 1][j] + allPaths[i][j - 1];
 				}
 			}
 		}
-
 		System.out.println("All possible combinations are: " + allPaths[destX][destY]);
 		
 	}

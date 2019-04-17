@@ -9,25 +9,21 @@ public class ConnectFour {
 
 		for (int row = 0; row < gameBoard.length; row++) {
 			for (int column = 0; column < (gameBoard[0].length - 3); column++) {
-				
 				// for horizontal matching
 				for (int k = 0; k < 4; k++) {
 					if (color == gameBoard[row][k + column])
 						counter++;
 					else
 						break;
-					
 					if (counter == 4)
 						return true;
 				}
-
 				counter = 0;
 			}
 		}
 
 		for (int row = 0; row < (gameBoard.length - 3); row++) {
 			for (int column = 0; column < (gameBoard[0].length - 3); column++) {	
-
 				// for vertical matching
 				for (int k = 0; k < 4; k++) {
 					if (color == gameBoard[k + row][column]) {
@@ -35,7 +31,6 @@ public class ConnectFour {
 					}
 					else 
 						break;
-
 					if (counter == 4)
 						return true;
 				}
@@ -47,7 +42,6 @@ public class ConnectFour {
 						counter++;
 					else 
 						break;
-
 					if (counter == 4)
 						return true;
 				}
@@ -60,7 +54,6 @@ public class ConnectFour {
 				for (int k = 0; k < 4; k++) {
 					if (color == gameBoard[k + row][column - k])
 						counter++;
-
 					if (counter == 4)
 						return true;
 				}
@@ -87,7 +80,6 @@ public class ConnectFour {
 		int rows = gameBoard.length;
 		
 		for (int i = (rows - 1); i >= 0; i--) {
-			
 			if (gameBoard[i][column] != ' ')
 				continue;
 			else {
@@ -124,7 +116,6 @@ public class ConnectFour {
 			putPieceInBoard(playerMove, color, gameBoard);
 			
 		} while (!isConsecutiveFour(gameBoard, color));
-		
 		input.close();
 		
 		turn *= -1;
@@ -134,8 +125,5 @@ public class ConnectFour {
 			System.out.println("Red player wins!");
 		else
 			System.out.println("Yellow player wins!");
-			
-
 	}
-
 }
